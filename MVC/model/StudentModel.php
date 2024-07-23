@@ -1,7 +1,6 @@
 <?php
-    class Student {
+    class StudentModel extends DB {
         private $conn;
-
         public $id;
         public $HoTen;
         public $DiaChi;
@@ -10,7 +9,6 @@
         public function __construct($db) {
             $this->conn = $db;
         }
-
         public function read(){
             $query = 'SELECT * FROM sinhvien';
             $stmt = $this->conn->prepare($query);
@@ -40,7 +38,7 @@
             }
             printf("Error: %s.\n", $stmt->error);
             return false;
-        }
+        }   
 
         public function update() {
             $query = 'UPDATE sinhvien SET HoTen = :HoTen, DiaChi = :DiaChi, Email = :Email WHERE id = :id';
